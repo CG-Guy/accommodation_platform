@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  created_at: 2020-10-28 12:24:51
+  updated_at: 2020-10-28 12:24:51
+  email: MyString
+  address: MyString
+  password: MyString
+  port: MyString
+  starttls_auto: false
+  composite: one
+  composite_type: Composite
+
+two:
+  created_at: 2020-10-28 12:24:51
+  updated_at: 2020-10-28 12:24:51
+  email: MyString
+  address: MyString
+  password: MyString
+  port: MyString
+  starttls_auto: false
+  composite: two
+  composite_type: Composite

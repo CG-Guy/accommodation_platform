@@ -1,0 +1,37 @@
+<%= form_with(model: sub_listing, local: true) do |form| %>
+  <% if sub_listing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sub_listing.errors.count, "error") %> prohibited this sub_listing from being saved:</h2>
+
+      <ul>
+        <% sub_listing.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rooms %>
+    <%= form.number_field :rooms %>
+  </div>
+
+  <div class="field">
+    <%= form.label :guest %>
+    <%= form.text_field :guest %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

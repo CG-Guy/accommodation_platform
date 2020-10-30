@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @sub_listing.status %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @sub_listing.price %>
+</p>
+
+<p>
+  <strong>Rooms:</strong>
+  <%= @sub_listing.rooms %>
+</p>
+
+<p>
+  <strong>Guest:</strong>
+  <%= @sub_listing.guest %>
+</p>
+
+<%= link_to 'Edit', edit_sub_listing_path(@sub_listing) %> |
+<%= link_to 'Back', sub_listings_path %>
