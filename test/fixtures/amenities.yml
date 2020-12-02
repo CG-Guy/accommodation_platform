@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reference: MyString
+  value: MyString
+  composite: one
+  composite_type: Composite
+
+two:
+  reference: MyString
+  value: MyString
+  composite: two
+  composite_type: Composite

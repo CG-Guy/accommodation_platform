@@ -31,3 +31,16 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        attachment:  
+          attributes:
+            attachment: 
+              max_size_error: 'Do not upload more than 3MB'
+        profile:  
+          attributes:
+            avatar:
+              content_type: 'file type is not a supported image. Supported files: png, jpg, jpeg'
+              max_size_error: 'Do not upload more than 3MB'
+            

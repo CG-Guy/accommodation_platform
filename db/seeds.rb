@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+MainSetting.create(var: "banner", value: "banner")
+MainSetting.create(var: "logo", value: "logo")
+MainSetting.create(var: "home_page", record: "home_page")
+MainSetting.create(var: "terms_and_conditions", record: "terms_and_conditions")
+MainSetting.create(var: "faq", record: "faq")
+MainSetting.create(var: "about", record: "about")
+

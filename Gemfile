@@ -26,6 +26,19 @@ gem 'dotenv-rails'
 
 gem 'devise'
 
+gem "pundit"
+
+gem 'image_processing', '~> 1.2'
+
+gem 'city-state'
+
+gem 'cs-rails', '~> 0.0.4'
+
+gem "select2-rails"
+
+gem 'pagy', '~> 3.5'
+
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

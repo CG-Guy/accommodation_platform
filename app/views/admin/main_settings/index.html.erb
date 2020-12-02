@@ -1,0 +1,114 @@
+<div class="container">
+    <div class="mx-auto">
+        <h1>Website Settings</h1>
+    </div>
+</div>
+<div class="container">
+    <%= form_for(MainSetting.new, url: admin_main_settings_path) do |form| %>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <%= form.label :website_title, class: 'control-label' %>
+            <%= form.text_field :website_title, value: MainSetting.website_title, class: "form-control", placeholder: :website_title  %>
+        </div>
+        <div class="form-group col-md-6">
+            <%= form.label :banner_title, class: 'control-label' %>
+            <%= form.text_field :banner_title, value: MainSetting.banner_title, class: "form-control", placeholder: :banner_title  %>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <%= form.label :meta_description, class: 'control-label' %>
+            <%= form.text_field :meta_description, value: MainSetting.meta_description, class: "form-control", placeholder: :meta_description  %>
+        </div>
+        <div class="form-group col-md-6">
+            <%= form.label :meta_keywords, class: 'control-label' %>
+            <%= form.text_field :meta_keywords, value: MainSetting.meta_keywords, class: "form-control", placeholder: :meta_keywords  %>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <%= form.label :facebook_url, class: 'control-label' %>
+            <%= form.text_field :facebook_url, value: MainSetting.facebook_url, class: "form-control", placeholder: :facebook_url  %>
+        </div>
+        <div class="form-group col-md-6">
+            <%= form.label :twitter_url, class: 'control-label' %>
+            <%= form.text_field :twitter_url, value: MainSetting.twitter_url, class: "form-control", placeholder: :twitter_url  %>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <%= form.label :instagram_url, class: 'control-label' %>
+            <%= form.text_field :instagram_url, value: MainSetting.instagram_url, class: "form-control", placeholder: :instagram_url  %>
+        </div>
+        <div class="form-group col-md-6">
+            <%= form.label :linkedin_url, class: 'control-label' %>
+            <%= form.text_field :linkedin_url, value: MainSetting.linkedin_url, class: "form-control", placeholder: :linkedin_url  %>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <%= form.label :admin_email %>
+                <%= form.text_field :admin_email, value: MainSetting.admin_email, class: "form-control", placeholder: :footer_about  %>
+            </div>
+            <div class="form-group col-md-6">
+                <%= form.label :admin_contact, class: 'control-label' %>
+                <%= form.text_field :admin_contact, value: MainSetting.admin_contact, class: "form-control", placeholder: :banner_text  %>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <%= form.label :public_contact %>
+                <%= form.text_field :public_contact, value: MainSetting.public_contact, class: "form-control", placeholder: :public_contact  %>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <%= form.label :public_email, class: 'control-label' %>
+            <%= form.text_field :public_email, value: MainSetting.public_email, class: "form-control", placeholder: :public_email  %>
+        </div>
+        <div class="form-group col-md-6">
+            <%= form.label :public_address, class: 'control-label' %>
+            <%= form.text_field :public_address, value: MainSetting.public_address, class: "form-control", placeholder: :public_address  %>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <%= form.label :public_contact_more %>
+            <%= form.text_field :public_contact_more, value: MainSetting.public_contact_more, class: "form-control", placeholder: :public_contact_more  %>
+        </div>
+        <div class="form-group col-md-6">
+            <%= form.label :footer_about %>
+            <%= form.text_area :footer_about, value: MainSetting.footer_about, class: "form-control", placeholder: :footer_about  %>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <%= form.label :google_analytics_id %>
+            <%= form.text_field :google_analytics_id, value: MainSetting.google_analytics_id, class: "form-control", placeholder: :google_analytics_id  %>
+        </div>
+    </div>
+    <%= form.submit :Save, class: "btn btn-primary" %>
+    <% end %>
+    <hr>
+    <%= form_with(url: site_files_path, method: "post", remote: true) do |form| %>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <%= form.label "Logo" %>
+            <%= form.file_field :logo, direct_upload: true %>
+        </div>
+        <div class="form-group col-md-6">
+            <%= form.label :banner %>
+            <%= form.file_field :banner, direct_upload: true %>
+        </div>
+        <div class="form-group col-md-6">
+            <%= form.label :inner_page_banner %>
+            <%= form.file_field :inner_page_banner, direct_upload: true %>
+        </div>
+    </div>
+    <%= form.submit :Upload, class: "btn btn-primary" %>
+    <% end %>
+</div>

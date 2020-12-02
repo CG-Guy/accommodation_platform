@@ -1,4 +1,4 @@
 class Reservation < ApplicationRecord
-  belongs_to :sub_listing
   belongs_to :user
+  belongs_to :composite, polymorphic: true
 end

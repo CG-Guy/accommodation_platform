@@ -2,12 +2,20 @@
 
 one:
   status: MyString
-  price: 1
-  rooms: 1
-  guest: MyString
+  price: MyString
+  no_rooms: MyString
+  no_adults: MyString
+  no_children: MyString
+  title: MyString
+  composite: one
+  composite_type: Composite
 
 two:
   status: MyString
-  price: 1
-  rooms: 1
-  guest: MyString
+  price: MyString
+  no_rooms: MyString
+  no_adults: MyString
+  no_children: MyString
+  title: MyString
+  composite: two
+  composite_type: Composite

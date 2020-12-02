@@ -1,0 +1,2 @@
+class AmenityItem < ApplicationRecord
+end

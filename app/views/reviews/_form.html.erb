@@ -1,0 +1,36 @@
+<div class="container">
+  <%= form_with(model: review, url: listing_reviews_path(@listing), local: true) do |form| %>
+    <% if review.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(review.errors.count, "error" ) %> prohibited this review from being saved:
+        </h2>
+
+        <ul>
+          <% review.errors.full_messages.each do |message| %>
+            <li>
+              <%= message %>
+            </li>
+            <% end %>
+        </ul>
+      </div>
+      <% end %>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <%= form.label :'Give us a rating' %>
+            <%= form.select(:value, [['★★★★★ (5/5)', 5], ['★★★★☆ (4/5)', 4] , ['★★★☆☆ (3/5)', 3] , ['★★☆☆☆ (2/5)', 2] , ['★☆☆☆☆ (1/5)', 1] ],
+              {include_blank: "Choose..." }, { :class=> 'form-control' }) %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <%= form.label :comment %>
+            <%= form.text_area :comment, class: 'form-control', placeholder: :comment %>
+          </div>
+        </div>
+
+        <div class="actions">
+          <%= form.submit %>
+        </div>
+        <% end %>
+</div>

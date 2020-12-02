@@ -2,26 +2,46 @@
 <html>
 
 <head>
-  <title>AccommodationPlatform</title>
+  <title>Accommodation Platform</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+   <link href="/css/style.css" type="text/css" rel="stylesheet" />
+   <link href="/css/bootstrap-datepicker.css" type="text/css" rel="stylesheet" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" />
+
   
+  <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag '/js/jquery.min.js', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag '/js/popper.min.js', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag '/js/bootstrap.min.js', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'general/swiper', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'general/functions', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'general/slick', 'data-turbolinks-track': 'reload' %>
-  <!-- <%= javascript_pack_tag 'general/owl', 'data-turbolinks-track': 'reload' %> -->
   
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous"></script>
+
+  <%= javascript_include_tag '/js/functions.js', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag '/js/owl.carousel.min.js', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag '/js/slick.js', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag '/js/swiper.min.js', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag '/js/main.js', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag '/js/jquery.fancybox.min.js', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag '/js/bootstrap-datepicker.min.js', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag '/js/jquery-ui.min.js', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag '/js/select2.js', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
   <p class="notice"><%= notice %> </p>
   <p class="alert"><%= alert %></p>
+
+  <%= render "layouts/header" %>
   <%= yield %>
+  <%= render "layouts/newsletter" %>
+  <%= render "layouts/footer" %>
+
 </body>
 
 </html>
