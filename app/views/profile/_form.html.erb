@@ -1,0 +1,46 @@
+<%= form_with(model: @user, url: profile_path , method: "put", local: true) do |form| %>
+<br>
+<!-- Modal -->
+<h3>General User Details:</h3>
+<div class="form-row">
+  <div class="form-group col-md-8">
+    <%= form.label "Avatar" %>
+    <%= form.file_field :avatar %>
+    <% if @user&.avatar&.attached? && @user&.avatar&.variable? %>
+    <%= image_tag @user.avatar.variant(resize_to_fit: [50, 50]) %>
+    <% else %>
+    <%= image_tag asset_path('01.jpg'), class: "card-img-top image", style: "max-width: 185px; max-height: 185px" %>
+    <% end %>
+  </div>
+</div>
+<div class="form-row">
+  <div class="form-group col-md-8">
+    <%= form.label :"first_name", class: "control-label" %>
+    <%= form.text_field :first_name, class: 'form-control', placeholder: :first_name %>
+  </div>
+</div>
+<div class="form-row">
+  <div class="form-group col-md-8">
+    <%= form.label :"last_name", class: "control-label" %>
+    <%= form.text_field :last_name, class: 'form-control', placeholder: :last_name %>
+  </div>
+</div>
+<div class="form-row">
+  <div class="form-group col-md-8">
+    <%= form.label :email %>
+    <%= form.text_field :email, class: 'form-control', placeholder: :email %>
+  </div>
+</div>
+<div class="form-row">
+  <div class="form-group col-md-8">
+    <%= form.label :phone %>
+    <%= form.text_field :phone, class: 'form-control', placeholder: :phone %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-auto">
+    <%= form.submit :Submit, class: "btn btn-primary btn-lg", data: { confirm: 'Are you sure you want to save the changes?' } %>
+  </div>
+</div>
+</div>
+<% end %>

@@ -1,0 +1,89 @@
+<!-- =======================
+	header Start-->
+<header class="header-static navbar-sticky navbar-light shadow">
+  <!-- Search -->
+  <div class="top-search collapse bg-light" id="search-open" data-parent="#search">
+    <div class="container">
+      <div class="row position-relative">
+        <div class="col-md-8 mx-auto py-5">
+          <form>
+            <div class="input-group">
+              <input class="form-control border-radius-right-0 border-right-0" type="text" name="search" autofocus
+                placeholder="What are you looking for?">
+              <button type="button" class="btn btn-grad border-radius-left-0 mb-0">Search</button>
+            </div>
+          </form>
+          <p class="small mt-2 mb-0"><strong>e.g.</strong>Template, TravelGo, WordPress </p>
+        </div>
+        <a class="position-absolute top-0 right-0 mt-3 mr-3" data-toggle="collapse" href="#search-open"><i
+            class="fas fa-window-close"></i></a>
+      </div>
+    </div>
+  </div>
+  <!-- End Search -->
+
+  <!-- Navbar top start-->
+  <div class="navbar-top d-none d-lg-block">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <!-- navbar top Left-->
+        <div class="d-flex align-items-center">
+          <!-- Language -->
+          <div class="dropdown"> <a class="dropdown-toggle" href="#" role="button" id="dropdownLanguage"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img class="dropdown-item-icon"
+                src="images/flag/uk.svg" alt=""> English </a>
+            <div class="dropdown-menu mt-2 shadow" aria-labelledby="dropdownLanguage"> <span
+                class="dropdown-item-text">Select language</span>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#"><img class="dropdown-item-icon" src="images/flag/sp.svg" alt="">
+                Español</a> <a class="dropdown-item" href="#"><img class="dropdown-item-icon" src="images/flag/fr.svg"
+                  alt=""> Français</a> <a class="dropdown-item" href="#"><img class="dropdown-item-icon"
+                  src="images/flag/gr.svg" alt=""> Deutsch</a>
+            </div>
+          </div>
+          <!-- Top info -->
+          <ul class="nav list-unstyled ml-3">
+            <li class="nav-item mr-3"> <a class="navbar-link" href="#"><strong>Phone:</strong> Pending </a> </li>
+            <li class="nav-item mr-3"> <a class="navbar-link" href="#"><strong>Email:</strong> Pending </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- navbar top Right-->
+        <div class="d-flex align-items-center">
+          <!-- Top Account -->
+          <div class="dropdown"> <a class="dropdown-toggle" href="#" role="button" id="dropdownAccount"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="far fa-user mr-2"></i>Account
+            </a>
+            <div class="dropdown-menu mt-2 shadow" aria-labelledby="dropdownAccount">
+              <% if !user_signed_in? %>
+              <a class="dropdown-item" href="<%= new_user_session_url %>">Log In</a>
+              <% else %>
+              <a class="dropdown-item" href="<%= destroy_user_session_url %>">Sign Out</a>
+              <% end %>
+              <a class="dropdown-item" href="<%= new_user_registration_url %>">Register</a>
+              <a class="dropdown-item" href="#">Settings</a>   
+            </div>
+          </div>
+          <!-- top link -->
+          <ul class="nav">
+            <li class="nav-item"> <a class="nav-link" href="">Contact</a> </li>
+          </ul>
+          <!-- top social -->
+          <ul class="social-icons">
+            <li class="social-icons-item social-facebook m-0"> <a class="social-icons-link w-auto px-2" href="#"><i
+                  class="fab fa-facebook-f"></i></a> </li>
+            <li class="social-icons-item social-instagram m-0"> <a class="social-icons-link w-auto px-2" href="#"><i
+                  class="fab fa-twitter"></i></a> </li>
+            <li class="social-icons-item social-twitter m-0"> <a class="social-icons-link w-auto pl-2" href="#"><i
+                  class="fab fa-instagram"></i></a> </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Navbar top End-->
+  <%= render 'layouts/navbar' %>
+</header>
+<!-- =======================
+	header End-->

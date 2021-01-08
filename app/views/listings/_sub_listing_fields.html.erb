@@ -1,0 +1,42 @@
+<div class="nested-fields">
+  <div class="jumbotron jumbotron-fluid" style="padding: 15px;">
+    <%= f.hidden_field :_destroy %>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <%= f.label :"Unit name or number", class: "control-label" %>
+            <%= f.number_field :title, class: 'form-control' , placeholder: :"Unit name or number", type: "number",  min: "0" %>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <%= f.label :price, class: "control-label" %>
+            <%= f.number_field :price, class: 'form-control' , placeholder: :"price" , type: "number",  min: "0" %>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <%= f.label :no_rooms, class: "control-label" %>
+            <%= f.number_field :no_rooms, class: 'form-control' , placeholder: :"Number of Rooms", type: "number",  min: "0" %>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <%= f.label :no_adults, class: "control-label" %>
+            <%= f.number_field :no_adults, class: 'form-control' , placeholder: :"Number of Adults", type: "number",  min: "0"  %>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <%= f.label :no_children, class: "control-label" %>
+            <%= f.number_field :no_children, class: 'form-control' , placeholder: :"Number of children", type: "number",  min: "0" %>
+        </div>
+      </div>
+      <div>
+        <div class="row justify-content-left">
+          <div class="col-3">
+            <%= link_to "Remove" , 'delete' , class: "remove_fields btn btn-danger" %>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

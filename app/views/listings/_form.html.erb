@@ -1,0 +1,127 @@
+<br>
+<div class="container">
+  <%= form_with(model: @listing, local: true) do |form| %>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="general-tab" data-toggle="tab" href="#general" role="tab" aria-controls="general"
+        aria-selected="true">General Details</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="description-tab" data-toggle="tab" href="#description" role="tab"
+        aria-controls="description" aria-selected="false">Description</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="location-tab" data-toggle="tab" href="#location" role="tab" aria-controls="location"
+        aria-selected="false">Location</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="amenities-tab" data-toggle="tab" href="#amenities" role="tab" aria-controls="amenities"
+        aria-selected="false">Amenities</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="sub_listings-tab" data-toggle="tab" href="#sub_listings" role="tab" aria-controls="sub_listings"
+        aria-selected="false">Units/Rooms</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="gallery-tab" data-toggle="tab" href="#gallery" role="tab" aria-controls="gallery"
+        aria-selected="false">Gallery</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent" style="margin-top: 25px;">
+    <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
+      <h1>Setup Listing</h1>
+      <div class="form-row">
+        <div class="form-group col-md-12" style="margin-top: 36px;">
+          <%= form.label :listing_name %>
+          <%= form.text_field :name, class: 'form-control', placeholder: :listing_name%>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="description" role="tabpanel" aria-labelledby="description-tab">
+      <div class="container">
+        <%= form.rich_text_area :rich_description, class: "form-control" %>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="location" role="tabpanel" aria-labelledby="location-tab">
+      <%= form.fields_for :address do |address_form| %>
+
+        <%= address_form.select(:country, CS.countries.collect {|country| [country[1], country[0]]}, {:include_blank => "Please Select Country"}, { :class => 'form-control'}) %>
+      
+        <%= address_form.select(:province, CS.get(address_form.object.country).collect {|province| [province[1], province[0]]}, {:include_blank => "Please Select State/Province"}, { :class => 'form-control'}) %>
+
+        <%= address_form.select(:city, CS.get(address_form.object.country, address_form.object.province).collect {|city| [city, city]}, {:include_blank => "Please Select City"}, { :class => 'form-control'}) %>
+      <div class="form-row">
+        <div class="form-group col-md-12" style="margin-top: 36px;">
+          <%= address_form.label :street_address %>
+          <%= address_form.text_field :street_address, class: 'form-control', placeholder: :street_address%>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-12" style="margin-top: 36px;">
+          <%= address_form.label :zip_code %>
+          <%= address_form.text_field :zip_code, class: 'form-control', placeholder: :zip_code%>
+        </div>
+      </div>
+    <% end %>
+      
+    </div>
+    <div class="tab-pane fade" id="amenities" role="tabpanel" aria-labelledby="amenities-tab">
+      <div class="container">
+        <%= form.rich_text_area :amenities_description, class: "form-control" %>
+      </div>
+      <br>
+      <div class="container">
+        <%= form.select :languages, options_for_select([["Wifi",1],["Cable TV",2],["Equipped Kitchen",3],["Heating",4],["Toiletteries",5],["Equipped Kitchen",6],["Desk for work",7],["Washing machine",8],["Hair dryer",9],["Microwave",10],["Air conditioning",11],["Pool",12]]), {}, {:multiple => true, :class => "your class", :style => "styles;", style: "styles;width: 50%;"} %>
+      </div>
+      <fieldset>
+        <hr>
+        <%= form.fields_for :listing_amenities do |description_form| %>
+        <%= render "listing_amenity_fields", f: description_form %>
+        <% end %>
+        <%= link_to_add_fields "Add Amenity", form, :listing_amenities %>
+      </fieldset>
+    </div>
+    <div class="tab-pane fade" id="sub_listings" role="tabpanel" aria-labelledby="sub_listings-tab">
+      <fieldset>
+        <%= form.fields_for :sub_listings do |my_listings_form| %>
+        <%= render "sub_listing_fields", f: my_listings_form %>
+        <% end %>
+        <%= link_to_add_fields "Add Units/Sub-Listing", form, :sub_listings %>
+      </fieldset>
+    </div>
+    <div class="tab-pane fade" id="gallery" role="tabpanel" aria-labelledby="gallery-tab">
+      <fieldset>
+        <h3>Gallery</h3>
+        <%= form.fields_for :attachments do |attachments_form| %>
+        <%= render "attachment_fields", f: attachments_form %>
+        <% end %>
+        <%= link_to_add_fields "Add Images", form, :attachments %>
+      </fieldset>
+    </div>
+    <div class="tab-pane fade" id="side-bar-infos" role="tabpanel" aria-labelledby="side-bar-infos-tab">
+      <h3>Tags:</h3>
+      <!-- <div class="form-row">
+      <div class="form-group col-md-8">
+        <%= form.label :country_list, class: "control-label" %>
+        <h6>Example input: South Africa, United States:</h6>
+        <%= form.text_area :country_list, class: 'form-control', placeholder: ' ' %>
+      </div>
+    </div> -->
+      <!-- <div class="form-row">
+        <div class="form-group col-md-9">
+          <b>Our products/services are available in the following country(s):</b>
+          <%= form.select(:country_list, ['World Wide', 'Botswana', 'DRC', 'Kenya', 'Mozambique', 'Mauritius', 'Nigeria', 'Rwanda', 'South Africa', 'Tanzania', 'Uganda', 'Zimbabwe', 'Zambia', ['Other (email education.expo.online@gmail.com with other countries that need to be added to this select list)', 'Other']], {}, { :class => 'form-control', :multiple => true }) %>
+        </div>
+      </div> -->
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-auto">
+        <%= form.submit :Submit, class: "btn btn-primary btn-lg", data: { confirm: 'Are you sure you want to save the changes?' } %>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+  <% end %>
+</div>

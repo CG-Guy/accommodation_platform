@@ -1,0 +1,19 @@
+<section class="p-5 height-500 parallax-bg tourBanner"
+style='background:url(<%= @inner_page_banner&.attached? ? url_for(@inner_page_banner) :  url_for(asset_url("11.jpg")) %> );'>
+<div class="container">
+  <div class="row all-text-white">
+      <div class="col-md-12 align-self-center">
+          <h1 class="innerpage-title">About Us</h1>
+          <h6 class="subtitle">Fusce iaculis ex sed nulla commodo imperdiet. Proin sed rhoncus ligula.</h6>
+          <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                  <li class="breadcrumb-item active"><a href="index.html"><i
+                              class="ti-home"></i><%= link_to 'Home', home_index_path(@event), class: "breadcrumb-item active" %></a>
+                  </li>
+                  <li class="breadcrumb-item">about Us</li>
+              </ol>
+          </nav>
+      </div>
+  </div>
+</div>
+</section>

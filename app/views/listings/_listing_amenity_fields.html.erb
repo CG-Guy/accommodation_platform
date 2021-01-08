@@ -1,0 +1,20 @@
+<div class="nested-fields">
+  <div class="jumbotron jumbotron-fluid" style="padding: 15px;">
+      <%= f.hidden_field :_destroy %>
+      <div class="form-row">
+          <div class="form-group col-md-6">
+              <div class="form-group col-md-6" >
+                <%= f.label :'Select Amenity:' %>
+                <%= f.collection_select :amenity_item_id, AmenityItem.order(:value),:id,:value, include_blank: true %>
+              </div>
+          </div>
+      </div>
+      <div>
+          <div class="row justify-content-left">
+              <div class="col-3">
+                  <%= link_to "Remove", '#', class: "remove_fields btn btn-danger" %>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

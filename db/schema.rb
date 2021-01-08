@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_29_204424) do
+ActiveRecord::Schema.define(version: 2020_12_27_111301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,54 @@ ActiveRecord::Schema.define(version: 2020_10_29_204424) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "addresses", force: :cascade do |t|
+    t.string "street_name"
+    t.string "province"
+    t.string "city"
+    t.string "zip_code"
+    t.string "street_address"
+    t.string "country"
+    t.string "composite_type", null: false
+    t.bigint "composite_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["composite_type", "composite_id"], name: "index_addresses_on_composite_type_and_composite_id"
+  end
+
+  create_table "amenities", force: :cascade do |t|
+    t.string "reference"
+    t.string "value"
+    t.string "composite_type", null: false
+    t.bigint "composite_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["composite_type", "composite_id"], name: "index_amenities_on_composite_type_and_composite_id"
+  end
+
+  create_table "amenity_items", force: :cascade do |t|
+    t.string "value"
+    t.string "key"
+    t.string "icon"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "attachments", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "reference"
+    t.string "attachable_type", null: false
+    t.bigint "attachable_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["attachable_type", "attachable_id"], name: "index_attachments_on_attachable_type_and_attachable_id"
+  end
+
+  create_table "blob_validators", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "hosts", force: :cascade do |t|
     t.string "status"
     t.bigint "user_id", null: false
@@ -54,6 +102,16 @@ ActiveRecord::Schema.define(version: 2020_10_29_204424) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["listing_id"], name: "index_hosts_on_listing_id"
     t.index ["user_id"], name: "index_hosts_on_user_id"
+  end
+
+  create_table "information_blocks", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "composite_type", null: false
+    t.bigint "composite_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["composite_type", "composite_id"], name: "index_information_blocks_on_composite_type_and_composite_id"
   end
 
   create_table "invoices", force: :cascade do |t|
@@ -68,6 +126,15 @@ ActiveRecord::Schema.define(version: 2020_10_29_204424) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["composite_type", "composite_id"], name: "index_invoices_on_composite_type_and_composite_id"
     t.index ["user_id"], name: "index_invoices_on_user_id"
+  end
+
+  create_table "listing_amenities", force: :cascade do |t|
+    t.bigint "listing_id", null: false
+    t.bigint "amenity_item_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["amenity_item_id"], name: "index_listing_amenities_on_amenity_item_id"
+    t.index ["listing_id"], name: "index_listing_amenities_on_listing_id"
   end
 
   create_table "listings", force: :cascade do |t|
@@ -92,15 +159,53 @@ ActiveRecord::Schema.define(version: 2020_10_29_204424) do
     t.index ["composite_type", "composite_id"], name: "index_mail_settings_on_composite_type_and_composite_id"
   end
 
+  create_table "navigation_cards", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.string "type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "value"
+    t.string "composite_type", null: false
+    t.bigint "composite_id", null: false
+    t.index ["composite_type", "composite_id"], name: "index_ratings_on_composite_type_and_composite_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
+  end
+
   create_table "reservations", force: :cascade do |t|
     t.datetime "check_in"
     t.datetime "check_out"
-    t.bigint "sub_listing_id", null: false
     t.bigint "user_id", null: false
+    t.string "composite_type", null: false
+    t.bigint "composite_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["sub_listing_id"], name: "index_reservations_on_sub_listing_id"
+    t.index ["composite_type", "composite_id"], name: "index_reservations_on_composite_type_and_composite_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "comment"
+    t.integer "value"
+    t.bigint "user_id", null: false
+    t.string "composite_type", null: false
+    t.bigint "composite_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["composite_type", "composite_id"], name: "index_reviews_on_composite_type_and_composite_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "settings", force: :cascade do |t|
@@ -121,11 +226,16 @@ ActiveRecord::Schema.define(version: 2020_10_29_204424) do
 
   create_table "sub_listings", force: :cascade do |t|
     t.string "status"
-    t.float "price"
-    t.integer "no_rooms"
-    t.integer "no_guests"
+    t.string "price"
+    t.string "no_rooms"
+    t.string "no_adults"
+    t.string "no_children"
+    t.string "title"
+    t.string "composite_type", null: false
+    t.bigint "composite_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["composite_type", "composite_id"], name: "index_sub_listings_on_composite_type_and_composite_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -152,8 +262,11 @@ ActiveRecord::Schema.define(version: 2020_10_29_204424) do
   add_foreign_key "hosts", "listings"
   add_foreign_key "hosts", "users"
   add_foreign_key "invoices", "users"
+  add_foreign_key "listing_amenities", "amenity_items"
+  add_foreign_key "listing_amenities", "listings"
   add_foreign_key "listings", "users"
-  add_foreign_key "reservations", "sub_listings"
+  add_foreign_key "ratings", "users"
   add_foreign_key "reservations", "users"
+  add_foreign_key "reviews", "users"
   add_foreign_key "site_admins", "users"
 end

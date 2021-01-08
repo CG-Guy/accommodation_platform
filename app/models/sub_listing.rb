@@ -1,3 +1,3 @@
 class SubListing < ApplicationRecord
-  belongs_to :listing
+  belongs_to :composite, polymorphic: true
 end

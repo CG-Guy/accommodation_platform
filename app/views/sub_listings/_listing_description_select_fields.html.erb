@@ -1,0 +1,6 @@
+<%= form_with(model: @sub, url: profile_path , method: "put", local: true) do |form| %>
+<div class="form-group col-md-6">
+  <%= form.label :'What Describes you', class: "control-label" %>
+  <%= form.collection_select :user_description, @event.user_description_selects,:value,:value, {include_blank: "Choose..."}, {class: 'form-control', required: true} %>
+</div>
+<% end %>

@@ -1,13 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  check_in: 2020-10-28 15:30:58
-  check_out: 2020-10-28 15:30:58
-  sub_listing: one
+  check_in: 2020-11-09 14:45:04
+  check_out: 2020-11-09 14:45:04
   user: one
+  composite: one
+  composite_type: Composite
 
 two:
-  check_in: 2020-10-28 15:30:58
-  check_out: 2020-10-28 15:30:58
-  sub_listing: two
+  check_in: 2020-11-09 14:45:04
+  check_out: 2020-11-09 14:45:04
   user: two
+  composite: two
+  composite_type: Composite

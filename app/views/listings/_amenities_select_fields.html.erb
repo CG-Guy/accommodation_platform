@@ -1,0 +1,24 @@
+<div class="nested-fields">
+  <div class="jumbotron jumbotron-fluid" style="padding: 15px;">
+      <%= f.hidden_field :_destroy %>
+      <div class="form-row">
+          <div class="form-group col-md-6">
+              <div class="form-group col-md-6">
+                <%= f.label :'Choose amenity:' %>
+                <%= f.select(:icon, ['class: "fa fa-wifi text-secondary w-1rem mr-3 text-center', 'Shampoo', 'Heating', 'Air Conditioning' , 'Washing Maching', 'Wifi', 'Breakfast', 'Indoor Fireplace', 'Buzzer/Wireless intercom', 'Doorman', 'Hangers', 'Iron', 'Hair Dryer', 'Laptop friendly workspace ' ], {include_blank: "Choose..."}, { :class => 'form-control' }) %>
+              </div>
+              <div class="form-group col-md-6">
+                <%= f.label :'What describes you:' %>
+                <%= f.select(:value, ['Kitchen', 'Shampoo', 'Heating', 'Air Conditioning' , 'Washing Maching', 'Wifi', 'Breakfast', 'Indoor Fireplace', 'Buzzer/Wireless intercom', 'Doorman', 'Hangers', 'Iron', 'Hair Dryer', 'Laptop friendly workspace ' ], {include_blank: "Choose..."}, { :class => 'form-control' }) %>
+              </div>
+          </div>
+      </div>
+      <div>
+          <div class="row justify-content-left">
+              <div class="col-3">
+                  <%= link_to "Remove", '#', class: "remove_fields btn btn-danger" %>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

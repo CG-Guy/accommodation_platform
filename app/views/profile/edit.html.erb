@@ -1,0 +1,16 @@
+<div class="container">
+  <%= form_with(url: profile_path(@user), method: "post", remote: true) do |form| %>
+  <div class="container " style="margin-top:30px">
+    <div class="col-auto">
+      <b>Click HERE when you have finished setting up your listing in order for us to evaluate for completeness. </b>
+      <br>
+      
+    </div>
+    <%= form.submit :Submit, class: "btn btn-primary btn-lg", value: "Need assistance from admin", name: "assist_button" %>
+  </div>
+  <% end %>
+  <br>
+  <hr>
+  <%= render 'form', url: profile_path(@user), method: :patch, back_path: account_path(@profile) %>
+  <hr>
+</div>

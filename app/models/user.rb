@@ -1,6 +1,8 @@
 class User < ApplicationRecord
+  self.table_name = 'users'
   has_one :site_admin, dependent: :destroy
   has_many :listings, dependent: :destroy
+  has_one_attached :avatar, dependent: :destroy
   has_many :reservations
   
 

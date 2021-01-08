@@ -1,0 +1,20 @@
+<% @listing.reviews.each do |review| %>
+  <div class="media d-block d-sm-flex review">
+    <div class="text-md-center mr-4 mr-xl-5">
+      <% if review.user.avatar.attached? && review.user.avatar.variable? %>
+        <%= image_tag review.user.avatar.variant(resize_to_fit: [100, 100]) %>
+          <% end %>
+    </div>
+    <div class="media-body">
+      <h6 class="mt-2 mb-1">
+        <%= review.user.first_name %>
+      </h6>
+      <div class="mb-2">
+        <%= review.value %>
+      </div>
+      <p class="text-muted text-sm">
+        <%= review.comment %>
+      </p>
+    </div>
+  </div>
+  <% end %>
