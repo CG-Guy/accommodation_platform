@@ -330,8 +330,80 @@
                   </tr>
                 </table>
               </div>
+           
+      
+
+            <div id="full-clndr" class="clearfix">
+              <script type="x-tmpl-mustache" id="full-clndr-template">
+              <div class="clndr">
+                <div class="clndr-controls">
+                  <div class="clndr-previous-button">&lt;</div>
+                  <div class="clndr-next-button">&gt;</div>
+                  <div class="current-month">{{month}} {{year}}</div>
+                </div>
+                <div class="clndr-grid">
+                  <div class="days-of-the-week">
+                    {{#daysOfTheWeek}}
+                      <div class="header-day">{{.}}</div>
+                    {{/daysOfTheWeek}}
+                  </div>
+                  <div class="days">
+                    {{#days}}
+                      <div class="{{classes}}" id="{{id}}"><span class="day-number">{{day}}</span></div>
+                    {{/days}}
+                  </div>
+                </div>
+                <div class="event-listing">
+                  <div class="event-listing-title">THIS MONTH</div>
+                    {{#eventsThisMonth}}
+                      <div class="event-item">
+                        <div class="event-item-name">{{title}}</div>
+                        <div class="event-item-location">{{location}}</div>
+                      </div>
+                    {{/eventsThisMonth}}
+                </div>
+               </div>
+              </script>
             </div>
+            
+            <script>
+              // Initiate calendar
+            var clndr = {};
+            $(function() {
+              // PARDON ME while I do a little magic to keep these events relevant for the rest of time...
+
+
+              var currentMonth = "<%= DateTime.current.strftime('%Y-%m') %>";
+              var nextMonth    = "<%= DateTime.current.next_month.strftime('%Y-%m') %>";
+
+              var events = [
+              <% @listing.reservations.each do |reservation| %>
+                <% DateTime.parse(reservation.check_in.strftime('%Y-%m-%d')).upto(DateTime.parse(reservation.check_out.strftime('%Y-%m-%d'))) do |reservation_date| %>
+                { date: "<%= reservation_date.strftime('%Y-%m-%d') %>", title: "<%= reservation_date.strftime('%Y-%m-%d') %>", location: 'Center for Beautiful Cats' },
+                <% end %>
+              <% end %>
+                { date: '2021-02-08', title: 'Persian Kitten Auction', location: 'Center for Beautiful Cats' },
+                { date: '2021-02-09', title: 'Cat Frisbee', location: 'Jefferson Park' },
+                { date: '2021-03-23', title: 'Kitten Demonstration', location: 'Center for Beautiful Cats' },
+                { date: '2021-04-07',    title: 'Small Cat Photo Session', location: 'Center for Cat Photography' }
+              ];
+            
+              var clndrTemplate = $('#full-clndr-template').html();
+            
+              clndr = $('#full-clndr').clndr({
+                // template: $('#full-clndr-template').html(),
+                render: function(data) {
+                  return Mustache.render(clndrTemplate, data);
+                },
+                events: events,
+                forceSixRows: true
+              });
+            });    
+            
+            </script>
           </div>
+          </div>
+         
           <div class="tab-pane" id="tab-de-5">
             <div class="text-block NopaddingDetails">
               <!-- Gallery-->

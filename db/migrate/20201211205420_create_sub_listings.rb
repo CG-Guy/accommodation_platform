@@ -7,8 +7,8 @@ class CreateSubListings < ActiveRecord::Migration[6.0]
       t.string :no_adults
       t.string :no_children
       t.string :title
-      t.references :composite, polymorphic: true, null: false
-
+      t.references :listing, null: false, foreign_key: true
+      
       t.timestamps
     end
   end

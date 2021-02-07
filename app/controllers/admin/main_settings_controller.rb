@@ -23,18 +23,10 @@ module Admin
       @editor ||= MainSetting.find_by(var: "editor")&.rich_text
     end
 
-    def terms_and_conditions
-    end
-
-    def home_page
-    end
-
     private
       def mainsetting_params
         params.require(:main_setting).permit(:google_analytics_id, :website_title, :banner_title, :banner_text, :banner_text_short, :meta_description, :facebook_url, :twitter_url, :instagram_url, :terms_and_conditions, 
-          :linkedin_url, :footer_about, :meta_keywords, :admin_email, :admin_contact, :public_contact_more, :public_email, :public_contact, :public_address, 
-          reservation_attributes: [:id, :path, :check_in, :check_out, :_destroy],
-          sub_listing_attributes: [:id, :path, :no_rooms, :no_adults, :no_children, :price, :listing_id, :_destroy])
+          :linkedin_url, :footer_about, :meta_keywords, :admin_email, :admin_contact, :public_contact_more, :public_email, :public_contact, :public_address])
       end
       def trix_params
         params.permit(:home_page)

@@ -8,8 +8,9 @@ class Listing < ApplicationRecord
   has_many :listing_amenities
   has_many :amenity_items, through: :listing_amenities
   has_many :attachments, as: :attachable, dependent: :destroy
-  has_many :sub_listings, as: :composite, dependent: :destroy
+  has_many :sub_listings, dependent: :destroy
   has_many :information_blocks, as: :composite, dependent: :destroy
+  has_many :reservations, through: :sub_listings, dependent: :destroy
   # has_many :amenity_item, as: :composite, dependent: :destroy
   accepts_nested_attributes_for :listing_amenities, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :address, allow_destroy: true#, reject_if: :all_blank
