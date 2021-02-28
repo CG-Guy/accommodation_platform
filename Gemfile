@@ -38,7 +38,7 @@ gem "select2-rails"
 
 gem 'pagy', '~> 3.5'
 
-
+gem 'amadeus'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
