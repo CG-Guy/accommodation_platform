@@ -80,4 +80,12 @@ class ListingsController < ApplicationController
       mail_setting_attributes: [:id, :email, :password, :address, :port, :starttls_auto],
       address_attributes: [:id, :country, :province, :city, :street_address, :zip_code, :_destroy])
     end
+
+    def amadeus
+      amadeus = Amadeus::Client.new({
+        client_id: ENV['HOTEL_API_ID'],
+        client_secret: ENV['HOTEL_API_SECRET']
+      })
+    end
+  
 end
