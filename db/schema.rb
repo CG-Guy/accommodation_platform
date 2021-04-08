@@ -188,11 +188,10 @@ ActiveRecord::Schema.define(version: 2020_12_27_111301) do
     t.datetime "check_in"
     t.datetime "check_out"
     t.bigint "user_id", null: false
-    t.string "composite_type", null: false
-    t.bigint "composite_id", null: false
+    t.bigint "sub_listing_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["composite_type", "composite_id"], name: "index_reservations_on_composite_type_and_composite_id"
+    t.index ["sub_listing_id"], name: "index_reservations_on_sub_listing_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
@@ -231,11 +230,10 @@ ActiveRecord::Schema.define(version: 2020_12_27_111301) do
     t.string "no_adults"
     t.string "no_children"
     t.string "title"
-    t.string "composite_type", null: false
-    t.bigint "composite_id", null: false
+    t.bigint "listing_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["composite_type", "composite_id"], name: "index_sub_listings_on_composite_type_and_composite_id"
+    t.index ["listing_id"], name: "index_sub_listings_on_listing_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -266,7 +264,9 @@ ActiveRecord::Schema.define(version: 2020_12_27_111301) do
   add_foreign_key "listing_amenities", "listings"
   add_foreign_key "listings", "users"
   add_foreign_key "ratings", "users"
+  add_foreign_key "reservations", "sub_listings"
   add_foreign_key "reservations", "users"
   add_foreign_key "reviews", "users"
   add_foreign_key "site_admins", "users"
+  add_foreign_key "sub_listings", "listings"
 end

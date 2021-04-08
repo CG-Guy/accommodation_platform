@@ -9,6 +9,12 @@ class ListingsController < ApplicationController
 
   def show
     @review = Review.where(composite: @listing, user: current_user).first_or_initialize
+
+    #define attribute
+    @listings = Listing.find(params[:id])
+    #Every listing has many sublistings
+    @sub_listings = @listing.sub_listings.by_date(params[:checkin],params[:checkout])
+    .order('name')
   end
 
   def new
